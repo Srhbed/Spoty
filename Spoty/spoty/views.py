@@ -16,6 +16,10 @@ from secrets import *
 from pprint import pprint
 from . import forms
 
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 
 client_id = os.getenv("CLIENT_ID")
@@ -43,6 +47,7 @@ token = r.json()['access_token']
 
 
 
+@csrf_exempt
 
 def get_track_info(artist_name, track_name):
 
@@ -105,7 +110,7 @@ def get_track_info(artist_name, track_name):
 
     return feature,url_img_track,info
 
-
+@csrf_exempt
 def search_track(request):
     header = {
         'accept': 'application/json',
