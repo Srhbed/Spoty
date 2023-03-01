@@ -129,7 +129,7 @@ def search_track(request):
             if track_info:
                 data = json.dumps(track_info)
                 print(data)
-                response=requests.post('http://127.0.0.1:8001/predict', headers=header, data=data)
+                response=requests.post('https://spoty-api-stak.onrender.com/predict', headers=header, data=data)
                 print(response)
                 return render(request, 'result.html', context={'response': response.text, 'form': form, 'url':url,'info':info})
             else:
