@@ -1,0 +1,15 @@
+artifact_uri: file:///home/apprenant/Documents/VinyleProject/mlruns/0/0fa4865c8c694cb5845b0dce45d9f16d/artifacts
+end_time: 1676985127914
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0fa4865c8c694cb5845b0dce45d9f16d
+run_name: orderly-calf-78
+run_uuid: 0fa4865c8c694cb5845b0dce45d9f16d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1676985122815
+status: 4
+tags: []
+user_id: apprenant
