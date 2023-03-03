@@ -50,7 +50,6 @@ token = r.json()['access_token']
 @csrf_exempt
 
 def get_track_info(artist_name, track_name):
-
     url = "https://api.spotify.com/v1/search"
     params = {
         "q": f"artist:{artist_name} track:{track_name}",
@@ -62,32 +61,28 @@ def get_track_info(artist_name, track_name):
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
     }
-
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
 
-    url_img_track= data["tracks"]["items"][0]['album']['images'][0]['url']
+    if not data["tracks"]["items"]:
+        return None, None, None
 
+    url_img_track= data["tracks"]["items"][0]['album']['images'][0]['url']
     track_id = data["tracks"]["items"][0]["id"]
 
     info={'album_name':data["tracks"]["items"][0]['album']['name'],
           'release_date':data["tracks"]["items"][0]['album']['release_date'],
           'preview_url':data["tracks"]["items"][0]['preview_url']
           }
-   
+
     pprint(track_id)
 
-
     features_url = f"https://api.spotify.com/v1/audio-features/{track_id}"
-
     data = {'id' : track_id}
-
     resultat = requests.get(url=features_url, headers=headers, params=data)
     features_items = resultat.json()
 
     print(features_items)
-
-
 
     feature={
             "duration_ms":features_items["duration_ms"],
@@ -105,10 +100,10 @@ def get_track_info(artist_name, track_name):
             "tempo":features_items["tempo"],
             "time_signature":features_items["time_signature"],
             # "genre":data["danceability"],
-              }
+    }
 
+    return feature, url_img_track, info
 
-    return feature,url_img_track,info
 
 @csrf_exempt
 def search_track(request):
@@ -133,7 +128,10 @@ def search_track(request):
                 print(response)
                 return render(request, 'result.html', context={'response': response.text, 'form': form, 'url':url,'info':info})
             else:
+                
                 form.add_error(None, 'Could not find track')
+                
+                return render(request, 'no_result.html', context={'form': form})
     else:
         context={'form' : form}
         return render(request, 'home_page.html', context=context)
