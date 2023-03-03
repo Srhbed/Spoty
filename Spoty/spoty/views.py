@@ -132,8 +132,8 @@ def search_track(request):
                 response=requests.post('https://spoty-api-stak.onrender.com/predict', headers=header, data=data)
                 print(response)
                 return render(request, 'result.html', context={'response': response.text, 'form': form, 'url':url,'info':info})
-            else:
-                form.add_error(None, 'Could not find track')
+        else:
+            form.add_error(None, 'Could not find track')
     else:
         context={'form' : form}
         return render(request, 'home_page.html', context=context)
