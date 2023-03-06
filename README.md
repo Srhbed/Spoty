@@ -1,8 +1,6 @@
-Les Gens N'ont Plus de Goût 
+# Les Gens N'ont Plus de Goût 
 
-Ce projet consiste en une application web qui permet de :
-
-L'application utilise une API qui est entraînée à partir de données provenant du service Spotify. Le modèle a été développé en utilisant des techniques de machine learning, avec comme objectif d'avoir une MA 
+Les gens n'ont plus de goût est une application web qui permet de prédire la popularité d'un morceau de musique s'il avait été sorti en 2022 en se basant sur ses caractéristiques musicales. Cette application utilise un modèle de prédiction de popularité qui a été entraîné sur des données de morceaux de musique récents. 
 
 * Fonctionnalités :
     - Authentification : les utilisateurs peuvent créer un compte et se connecter à l'application. 
@@ -33,3 +31,33 @@ Les contributions sont les bienvenues ! Si vous souhaitez apporter des modificat
     Créer une branche à partir de la branche main
     Effectuer les modifications nécessaires
     Créer une pull request vers la branche main
+
+* API 
+
+L'application expose une API qui permet d'obtenir une prédiction de popularité pour un morceau de musique en utilisant une requête POST .
+
+Les données doivent être envoyées au format JSON dans le corps de la requête. Les données doivent inclure les caractéristiques musicales du morceau de musique que vous souhaitez prédire. 
+
+Exemple de données JSON : 
+
+        json 
+
+            {
+                "acousticness": 0.234,
+                "danceability": 0.756,
+                "duration_ms": 205920,
+                "energy": 0.543,
+                "instrumentalness": 0,
+                "key": 2,
+                "liveness": 0.134,
+                "loudness": -7.32,
+                "mode": 1,
+                "speechiness": 0.0356,
+                "tempo": 120.03,
+                "time_signature": 4,
+                "valence": 0.624
+            }
+
+
+* Base de données 
+L'application utilise une base de données SQLite3
