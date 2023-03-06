@@ -20,11 +20,11 @@ L'application utilise une API qui est entraînée à partir de données provenan
 
 * Dépendances
 
-    - Python 3.8
-    - Django 3.2.9
-    - Scikit-learn 1.0.2
-    - Spotipy 2.18.0
-    - Docker 20.10.8
+    - Python 
+    - Django 
+    - Scikit-learn 
+    - Spotipy 
+    - Docker 
 
 * Contribuer
 
