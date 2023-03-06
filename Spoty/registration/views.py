@@ -8,6 +8,7 @@ from datetime import datetime
 import requests
 from . import forms
 
+
 # Create your views here.
 
 class SignUp(CreateView):
