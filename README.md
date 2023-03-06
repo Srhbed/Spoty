@@ -60,4 +60,5 @@ Exemple de données JSON :
 
 
 * Base de données 
+
 L'application utilise une base de données SQLite3
